@@ -1,0 +1,4 @@
+\section{Motivation}
+Given that sentiment analysis has gained such popularity and being used for various of tasks, there are many individuals and organizations that is implementing such systems for their works. However, initial challenge they encounter is the selection of the solution approach. As in many other engineering problems, each solution method brings its unique trade-offs. \\
+
+We believe it is valuable to provide a comparison between the state-of-the-art solution methods and ease the selection process of people who seek to implement their own customized sentiment analysis systems.
