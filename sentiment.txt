@@ -1,0 +1,4 @@
+\section{Introduction}
+Sentiment Analysis is an NLP technique to determine whether the given piece of text is positive, negative or neutral. Prior to World Wide Web and embracement of the social media platforms such as Twitter, Facebook, forums etc. by vast majority, studies on this area were very limited. Web has changed the way people express their opinions about an entity, hence, enabled researchers to collect the opinionated texts from Web and conduct their research. 
+
+Today, Sentiment Analysis has been incorporated by hundreds of companies and has a wide range of use in academia. For companies that want to monitor their reputation and opinions about their products/services, sentiment analysis offer these companies to monitor social media in real time and assess their view in public in real time. 
