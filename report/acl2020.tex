@@ -5,6 +5,7 @@
 \renewcommand{\UrlFont}{\ttfamily\small}
 
 \usepackage{microtype}
+\usepackage{multirow}
 
 \aclfinalcopy 
 %\def\aclpaperid{***} %  Enter the acl Paper ID here
@@ -62,16 +63,17 @@ In this paper, we implement Sentiment Lexicons, Word2Vec, LSTM methods of buildi
 
 \begin{table*}[ht]
 	\centering
-	\begin{tabular}{| c | c | c | c | c |}
+	\begin{tabular}{|l|l|l|l|l|l|}
 		\hline
-		\textbf{Method} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F-Score} \\ \hline
-		Sentiment Lexicons & x & x & x & x\\ \hline
-		LSTM & x & x & x & x\\ \hline
-		Word2Vec & x & x & x & x\\ \hline
-		Sentiment Lexicons & x & x & x & x\\ \hline
-		\hline
+		\textbf{Method} & \textbf{Accuracy} & \textbf{Average Type} & \textbf{Precision} & \textbf{Recall} & \textbf{F-score} \\ \hline
+		\multirow{2}{*}{Sentiment Lexicon} & \multirow{2}{*}{0.76} & Macro & 0.52 & 0.58 & 0.5 \\ \cline{3-6}
+		& & Weighted & 0.91 & 0.76 & 0.82 \\ \hline
+		\multirow{2}{*}{Word2Vec} & \multirow{2}{*}{0.92} & Macro & 0.53 & 0.52 & 0.52\\ \cline{3-6}
+		& & Weighted & 0.9 & 0.92 & 0.91 \\ \hline
+		\multirow{2}{*}{LSTM} & \multirow{2}{*}{0.92} & Macro & 0.5 & 0.5 & 0.5 \\ \cline{3-6}
+		& & Weighted & 0.89 & 0.92 & 0.91 \\ \hline  
 	\end{tabular}
-\caption{Results of the various methods of Sentiment Analysis implementation}
+\caption{Results of the various methods of Sentiment Analysis implementation on \textit{Automotive Category Review} Data}
 \end{table*}
 
 Given that sentiment analysis has gained such popularity and being used for various of tasks, there are many individuals and organizations that implement such systems for their works. However, initial challenge they encounter is the selection of the solution approach. As in many other engineering problems, each solution method brings its unique trade-offs. \\
@@ -122,11 +124,7 @@ For the evaluation of the models, we use \textit{f-score}, \textit{precision}, \
 First method of implementation is the most straight forward method among the methods we compare. In the \textit{Sentiment Lexicons} method, by ussing the \textit{Domain Specific Sentiment Lexicons Dataset} \cite{hamilton2016inducing}, we retrieve the \texttt{mean\_sentiment} score for each of the words in the text. \\
 
 Later on, we calculate the overall sentiment score as running total of the \texttt{mean\_sentiment} of each words. 
-Running this method on \textit{Automotive Reviews} from the \textit{Amazon Customer Review Dataset} \cite{He_2016, mcauley2015imagebased}, we obtain the following results.\\
-	- Accuracy: 75.6\% \\
-	- Precision: 95.4\% \\
-	- Recall: 77.8\% \\
-	- F-Score: 85.7\% \\
+Running this method on \textit{Automotive Reviews} from the \textit{Amazon Customer Review Dataset} \cite{He_2016, mcauley2015imagebased},obtained results can be seen from Table 1.
 
 
 Another approach we evaluated was to implement the Sentiment Analysis System using LSTM Model
@@ -134,9 +132,9 @@ Another approach we evaluated was to implement the Sentiment Analysis System usi
 
 
 \section{Conclusion}
-In this paper, we implemented the Sentiment Analysis by calculating a total sentiment score for the text by adding the \textit{Sentiment Lexicon} of each word.
+In this paper, we compared implementations of the Sentiment Analysis System with various methods. These are; Using \textit{Sentiment Lexicons} of words, \textit{LSTM Model}, \textit{Word2Vec} Model\\
 
-With the repetitive tries on different models, we observed that the \textit{LSTM Method} always had the highest accuracy score. 
+With the repetitive tries on different datasets, we observed that the \textit{LSTM Method} always had the highest accuracy score. However, implementation of the \textit{Sentiment Lexicons} relatively easier compared to other methods. \textit{LSTM} and \textit{Word2Vec} are similar on most of the metrics such as accuracy, precision etc.
 
 \bibliography{anthology,acl2020}
 \bibliographystyle{acl_natbib}
