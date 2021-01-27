@@ -31,7 +31,9 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-abstract
+In the recent years, \textit{Sentiment Analysis} has gained significant popularity with the datasets of texts with opinions being available through the social media posts. \cite{bing} It is a powerful tool that can be used across many applications and industries. Nowadays, we see many organizations and companies already incorporated the automated sentiment analysis systems in order to monitor their reputability, opinion of the society about their products and services, conduct market research and so on. \\ \par
+There are already some number of methods for building a Sentiment Analysis System. While most of them are complex methods that include very sophisticated Neural Networks, there are simpler ways of accomplishing the task as well. In this paper, we implement various methods of building Sentiment Analysis Systems and compare the results with regard to accuracy and precision. 
+
 \end{abstract}
 
 \section{Introduction}
@@ -51,21 +53,27 @@ As an example, text snippet from a hotel review in Manhattan can be seen below.\
 	}
 }\\
 
-Overall, the review presents a positive opinion about the hotel. A sentiment system accepts such review as an input and assigns a score to the positivity of the sentiment in the text.
+Overall, the review presents a positive opinion about the hotel. A sentiment system accepts such review as an input and assigns a score to the positivity of the sentiment in the text. \\
+
+In this paper, we compare the various methods that can be utilized for building a \textit{Sentiment Analysis System}. Testing of these models has been conducted on \textit{Amazon Customer Review Dataset} \cite{He_2016, mcauley2015imagebased}. In the dataset, reviews are not labeled as Positive or Negative, however, ratings of the users to the product on the scale of 5 is available. Hence, we assume that ratings that are greater or equal to 3/5 are Positive, less than 2/5 are to be Negative Reviews.
 
 \section{Motivation}
 Given that sentiment analysis has gained such popularity and being used for various of tasks, there are many individuals and organizations that is implementing such systems for their works. However, initial challenge they encounter is the selection of the solution approach. As in many other engineering problems, each solution method brings its unique trade-offs. \\
 
-We believe it is valuable to provide a comparison between the state-of-the-art solution methods and ease the selection process of people who seek to implement their own customized sentiment analysis systems.
+We believe it is valuable to provide a comparison between the state-of-the-art solution methods and ease the selection process of people who seek to implement their own customized sentiment analysis systems. \\
+
+
 
 \section{Problem Definition}
 problem definition text
 
 \section{Evaluation}
-evaluation text
+First method of implementation is the most straight forward method among the methods we compare. Using the \textit{Domain Specific Sentiment Lexicons Dataset} \cite{hamilton2016inducing}, we retrieved the \texttt{mean\_sentiment} score for each of the words in the text. In the dataset, \texttt{mean\_sentiment} score for words are in the range of $-3.91$ and $+2.76$. Running total of these scores for each word is assigned to be the \textit{sentiment\_score} for a review. If the \textit{sentiment\_score} is less than 0, we classify the review as negative, if greater than 0 we classify it as positive. \\
+
+Running this method on \textit{Automotive Reviews} from the \textit{Amazon Customer Review Dataset} \cite{He_2016, mcauley2015imagebased}, we obtain $72.2\%$ accuracy rate for our classification.
 
 \section{Conclusion}
-conclusion text
+In this paper, we implemented the Sentiment Analysis by calculating a total sentiment score for the text by adding the \textit{Sentiment Lexicon} of each word.
 
 \bibliography{anthology,acl2020}
 \bibliographystyle{acl_natbib}

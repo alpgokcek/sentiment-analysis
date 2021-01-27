@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{5}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Feldman(2013)}]{ronen}
@@ -6,5 +6,28 @@ Ronen Feldman. 2013.
 \newblock \href {https://doi.org/10.1145/2436256.2436274} {Techniques and
   applications for sentiment analysis}.
 \newblock \emph{Commun. ACM}, 56(4):82–89.
+
+\bibitem[{Hamilton et~al.(2016)Hamilton, Clark, Leskovec, and
+  Jurafsky}]{hamilton2016inducing}
+William~L. Hamilton, Kevin Clark, Jure Leskovec, and Dan Jurafsky. 2016.
+\newblock \href {http://arxiv.org/abs/1606.02820} {Inducing domain-specific
+  sentiment lexicons from unlabeled corpora}.
+
+\bibitem[{He and McAuley(2016)}]{He_2016}
+Ruining He and Julian McAuley. 2016.
+\newblock \href {https://doi.org/10.1145/2872427.2883037} {Ups and downs}.
+\newblock \emph{Proceedings of the 25th International Conference on World Wide
+  Web}.
+
+\bibitem[{Liu(2010)}]{bing}
+Bing Liu. 2010.
+\newblock Sentiment analysis and subjectivity.
+
+\bibitem[{McAuley et~al.(2015)McAuley, Targett, Shi, and van~den
+  Hengel}]{mcauley2015imagebased}
+Julian McAuley, Christopher Targett, Qinfeng Shi, and Anton van~den Hengel.
+  2015.
+\newblock \href {http://arxiv.org/abs/1506.04757} {Image-based recommendations
+  on styles and substitutes}.
 
 \end{thebibliography}
