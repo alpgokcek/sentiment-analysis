@@ -32,7 +32,7 @@
 \maketitle
 \begin{abstract}
 In the recent years, \textit{Sentiment Analysis} has gained significant popularity with the datasets of texts with opinions being available through the social media posts. \cite{bing} It is a powerful tool that can be used across many applications and industries. Nowadays, we see many organizations and companies already incorporated the automated sentiment analysis systems in order to monitor their reputability, opinion of the society about their products and services, conduct market research and so on. \\ \par
-There are already some number of methods for building a Sentiment Analysis System. While most of them are complex methods that include very sophisticated Neural Networks, there are simpler ways of accomplishing the task as well. In this paper, we implement various methods of building Sentiment Analysis Systems and compare the results with regard to accuracy and precision. 
+There are already some number of methods for building a Sentiment Analysis System. While most of them are complex methods that include very sophisticated Neural Networks, there are simpler ways of accomplishing the task as well. In this paper, we implement Sentiment Lexicons, Word2Vec, LSTM methods of building Sentiment Analysis Systems and compare the results with regard to accuracy, precision, recall and f-score. 
 
 \end{abstract}
 
@@ -41,7 +41,7 @@ Sentiment Analysis is an NLP technique to determine whether the given piece of t
 
 In today's world, Sentiment Analysis has been incorporated by hundreds of companies and has a wide range of use in academia. For companies that want to monitor their reputation and opinions about their products/services, sentiment analysis offer these companies to monitor social media in real time and assess their view in public in real time.\\
 
-It is common to classify sentences into two or three groups, Positive, Neutral, Negative.
+In Sentiment Analysis, it is common to classify sentences into two or three groups, Positive, Neutral, Negative. \\
 
 As an example, text snippet from a hotel review in Manhattan can be seen below.\\
 
@@ -55,25 +55,88 @@ As an example, text snippet from a hotel review in Manhattan can be seen below.\
 
 Overall, the review presents a positive opinion about the hotel. A sentiment system accepts such review as an input and assigns a score to the positivity of the sentiment in the text. \\
 
-In this paper, we compare the various methods that can be utilized for building a \textit{Sentiment Analysis System}. Testing of these models has been conducted on \textit{Amazon Customer Review Dataset} \cite{He_2016, mcauley2015imagebased}. In the dataset, reviews are not labeled as Positive or Negative, however, ratings of the users to the product on the scale of 5 is available. Hence, we assume that ratings that are greater or equal to 3/5 are Positive, less than 2/5 are to be Negative Reviews.
+In this paper, we implement Sentiment Lexicons, Word2Vec, LSTM methods of building Sentiment Analysis Systems and compare the results with regard to accuracy, precision, recall and f-score. 
+
 
 \section{Motivation}
-Given that sentiment analysis has gained such popularity and being used for various of tasks, there are many individuals and organizations that is implementing such systems for their works. However, initial challenge they encounter is the selection of the solution approach. As in many other engineering problems, each solution method brings its unique trade-offs. \\
+
+\begin{table*}[ht]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\textbf{Method} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F-Score} \\ \hline
+		Sentiment Lexicons & x & x & x & x\\ \hline
+		LSTM & x & x & x & x\\ \hline
+		Word2Vec & x & x & x & x\\ \hline
+		Sentiment Lexicons & x & x & x & x\\ \hline
+		\hline
+	\end{tabular}
+\caption{Results of the various methods of Sentiment Analysis implementation}
+\end{table*}
+
+Given that sentiment analysis has gained such popularity and being used for various of tasks, there are many individuals and organizations that implement such systems for their works. However, initial challenge they encounter is the selection of the solution approach. As in many other engineering problems, each solution method brings its unique trade-offs. \\
 
 We believe it is valuable to provide a comparison between the state-of-the-art solution methods and ease the selection process of people who seek to implement their own customized sentiment analysis systems. \\
 
-
-
+ Testing of these methods has been conducted on \textit{Amazon Customer Review Dataset} \cite{He_2016, mcauley2015imagebased}. In the dataset, reviews are not labeled as Positive or Negative, however, ratings of the users to the product on the scale of 5 is available. Hence, we assume that ratings that are greater or equal to 3/5 are Positive, less than 2/5 are to be Negative Reviews.
+ 
 \section{Problem Definition}
-problem definition text
+In this paper we evaluate various methods of building a \textit{Sentiment Analysis System}. Methods that compared are as follows.
+\subsection{Using the Sentiment Lexicons of Words}
+	In this approach, we use a dataset which presents sentiment scores of 5000 English words. In the dataset, \texttt{mean\_sentiment} score for words are in the range of $-3.91$ and $+2.76$. Running total of these scores for each word is assigned to be the \texttt{sentiment\_score} for a review. If the \texttt{sentiment\_score} is less than 0, we label the review as negative, if greater than 0 we label it as positive. Finally, after obtaining the \texttt{sentiment\_score} for the review, we compare the labeling of the review with the the calculated \texttt{sentiment\_score}. If the label is negative and \texttt{sentiment\_score} is less than 0, or if the label is positive and score is greater than 0 we conclude that the classification is correct 
+\subsection{Using LSTM Model}
+	Another approach is to utilize the Long Short-Term Memory Models. 	This method is based on Neural Networks. LSTM is a special kind of Neural Network, they are assumed to excel at NLP tasks because of their ability to process long text inputs.  
+
+\subsection{Using Word2Vec Model}
+Word2Vec is an algorithm that use Neural Networks to learn word associations from a corpus of text. Word2Vec represents each word with unique vector with regard to their meanings and associations with other words. \\
+In this method, we use sklearn library to train a neural network with MLP Classifier. Given the rating in range 0-5 and the review text, we associate the word vectors from review to the rating. If the rating is greater than 3 we assume that is a positive review, if less it is a negative. After these association, we get a model that given a vector as input, it can give whether is likely to be associated to a positive rating review or a negative. 
 
 \section{Evaluation}
-First method of implementation is the most straight forward method among the methods we compare. Using the \textit{Domain Specific Sentiment Lexicons Dataset} \cite{hamilton2016inducing}, we retrieved the \texttt{mean\_sentiment} score for each of the words in the text. In the dataset, \texttt{mean\_sentiment} score for words are in the range of $-3.91$ and $+2.76$. Running total of these scores for each word is assigned to be the \textit{sentiment\_score} for a review. If the \textit{sentiment\_score} is less than 0, we classify the review as negative, if greater than 0 we classify it as positive. \\
+For the evaluation of the models, we use \textit{f-score}, \textit{precision}, \textit{accuracy} and \textit{recall}. Each metric is defined in terms of \\TP = True Positives, TN = True Negatives, FP = False Positives, and FN = False Negatives.
 
-Running this method on \textit{Automotive Reviews} from the \textit{Amazon Customer Review Dataset} \cite{He_2016, mcauley2015imagebased}, we obtain $72.2\%$ accuracy rate for our classification.
+\begin{itemize}
+	\item \textbf{Accuracy}
+		Calculated as the ratio of \textit{True Predictions} to  \textit{Total Number of Predictions}. 
+		\begin{equation}
+			\mathrm{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+		\end{equation}
+
+	
+	\item \textbf{Precision}
+		 Calculated as the ratio of \textit{True Positives} to  \textit{All positive classifications}.
+		\begin{equation}
+			\mathrm{Precision} =\frac{TP}{TP + FP}
+		\end{equation}
+
+	\item \textbf{Recall}
+		 Calculated as the ratio of \textit{True Positives} to  \textit{Positive Labeled} reviews in the dataset. 
+		\begin{equation}
+			\mathrm{Recall} = \frac{TP}{TP + FN}
+		\end{equation}
+	\item \textbf{f-score}
+	\begin{equation}
+		2 \times \frac{\mathrm{Precision}\times\mathrm{Recall}}{\mathrm{Precision} + \mathrm{Recall}}
+	\end{equation}
+\end{itemize}
+
+First method of implementation is the most straight forward method among the methods we compare. In the \textit{Sentiment Lexicons} method, by ussing the \textit{Domain Specific Sentiment Lexicons Dataset} \cite{hamilton2016inducing}, we retrieve the \texttt{mean\_sentiment} score for each of the words in the text. \\
+
+Later on, we calculate the overall sentiment score as running total of the \texttt{mean\_sentiment} of each words. 
+Running this method on \textit{Automotive Reviews} from the \textit{Amazon Customer Review Dataset} \cite{He_2016, mcauley2015imagebased}, we obtain the following results.\\
+	- Accuracy: 75.6\% \\
+	- Precision: 95.4\% \\
+	- Recall: 77.8\% \\
+	- F-Score: 85.7\% \\
+
+
+Another approach we evaluated was to implement the Sentiment Analysis System using LSTM Model
+
+
 
 \section{Conclusion}
 In this paper, we implemented the Sentiment Analysis by calculating a total sentiment score for the text by adding the \textit{Sentiment Lexicon} of each word.
+
+With the repetitive tries on different models, we observed that the \textit{LSTM Method} always had the highest accuracy score. 
 
 \bibliography{anthology,acl2020}
 \bibliographystyle{acl_natbib}
